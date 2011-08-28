@@ -1,4 +1,8 @@
 Redwing::Application.routes.draw do
+  devise_for :roles
+
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -24,6 +28,7 @@ Redwing::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+  root :to => "home#index"
 
   # Sample resource route with sub-resources:
   #   resources :products do
