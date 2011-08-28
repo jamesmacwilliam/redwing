@@ -28,7 +28,9 @@ Redwing::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-  root :to => "home#index"
+  root :to => 'home#index'
+  match ':controller(/:action(/:id))'
+  match ':controller(/:action(/:id(.:format)))'  
 
   # Sample resource route with sub-resources:
   #   resources :products do
