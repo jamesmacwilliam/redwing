@@ -1,0 +1,185 @@
+<%= form_for(@scope_type) do |f| %>
+  <% if @scope_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scope_type.errors.count, "error") %> prohibited this scope_type from being saved:</h2>
+
+      <ul>
+      <% @scope_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :ProjectTypeID %><br />
+    <%= f.text_field :ProjectTypeID %>
+  </div>
+  <div class="field">
+    <%= f.label :_5p %><br />
+    <%= f.check_box :_5p %>
+  </div>
+  <div class="field">
+    <%= f.label :_5b %><br />
+    <%= f.check_box :_5b %>
+  </div>
+  <div class="field">
+    <%= f.label :_10p %><br />
+    <%= f.check_box :_10p %>
+  </div>
+  <div class="field">
+    <%= f.label :_10b %><br />
+    <%= f.check_box :_10b %>
+  </div>
+  <div class="field">
+    <%= f.label :_15p %><br />
+    <%= f.check_box :_15p %>
+  </div>
+  <div class="field">
+    <%= f.label :_15b %><br />
+    <%= f.check_box :_15b %>
+  </div>
+  <div class="field">
+    <%= f.label :_20p %><br />
+    <%= f.check_box :_20p %>
+  </div>
+  <div class="field">
+    <%= f.label :_20b %><br />
+    <%= f.check_box :_20b %>
+  </div>
+  <div class="field">
+    <%= f.label :_25p %><br />
+    <%= f.check_box :_25p %>
+  </div>
+  <div class="field">
+    <%= f.label :_25b %><br />
+    <%= f.check_box :_25b %>
+  </div>
+  <div class="field">
+    <%= f.label :_30p %><br />
+    <%= f.check_box :_30p %>
+  </div>
+  <div class="field">
+    <%= f.label :_30b %><br />
+    <%= f.check_box :_30b %>
+  </div>
+  <div class="field">
+    <%= f.label :_35p %><br />
+    <%= f.check_box :_35p %>
+  </div>
+  <div class="field">
+    <%= f.label :_35b %><br />
+    <%= f.check_box :_35b %>
+  </div>
+  <div class="field">
+    <%= f.label :_40p %><br />
+    <%= f.check_box :_40p %>
+  </div>
+  <div class="field">
+    <%= f.label :_40b %><br />
+    <%= f.check_box :_40b %>
+  </div>
+  <div class="field">
+    <%= f.label :_45p %><br />
+    <%= f.check_box :_45p %>
+  </div>
+  <div class="field">
+    <%= f.label :_45b %><br />
+    <%= f.check_box :_45b %>
+  </div>
+  <div class="field">
+    <%= f.label :_50p %><br />
+    <%= f.check_box :_50p %>
+  </div>
+  <div class="field">
+    <%= f.label :_50b %><br />
+    <%= f.check_box :_50b %>
+  </div>
+  <div class="field">
+    <%= f.label :_55p %><br />
+    <%= f.check_box :_55p %>
+  </div>
+  <div class="field">
+    <%= f.label :_55b %><br />
+    <%= f.check_box :_55b %>
+  </div>
+  <div class="field">
+    <%= f.label :_60p %><br />
+    <%= f.check_box :_60p %>
+  </div>
+  <div class="field">
+    <%= f.label :_60b %><br />
+    <%= f.check_box :_60b %>
+  </div>
+  <div class="field">
+    <%= f.label :_65p %><br />
+    <%= f.check_box :_65p %>
+  </div>
+  <div class="field">
+    <%= f.label :_65b %><br />
+    <%= f.check_box :_65b %>
+  </div>
+  <div class="field">
+    <%= f.label :_70p %><br />
+    <%= f.check_box :_70p %>
+  </div>
+  <div class="field">
+    <%= f.label :_70b %><br />
+    <%= f.check_box :_70b %>
+  </div>
+  <div class="field">
+    <%= f.label :_75p %><br />
+    <%= f.check_box :_75p %>
+  </div>
+  <div class="field">
+    <%= f.label :_75b %><br />
+    <%= f.check_box :_75b %>
+  </div>
+  <div class="field">
+    <%= f.label :_80p %><br />
+    <%= f.check_box :_80p %>
+  </div>
+  <div class="field">
+    <%= f.label :_80b %><br />
+    <%= f.check_box :_80b %>
+  </div>
+  <div class="field">
+    <%= f.label :_85p %><br />
+    <%= f.check_box :_85p %>
+  </div>
+  <div class="field">
+    <%= f.label :_85b %><br />
+    <%= f.check_box :_85b %>
+  </div>
+  <div class="field">
+    <%= f.label :_90p %><br />
+    <%= f.check_box :_90p %>
+  </div>
+  <div class="field">
+    <%= f.label :_90b %><br />
+    <%= f.check_box :_90b %>
+  </div>
+  <div class="field">
+    <%= f.label :_95p %><br />
+    <%= f.check_box :_95p %>
+  </div>
+  <div class="field">
+    <%= f.label :_95b %><br />
+    <%= f.check_box :_95b %>
+  </div>
+  <div class="field">
+    <%= f.label :_100p %><br />
+    <%= f.check_box :_100p %>
+  </div>
+  <div class="field">
+    <%= f.label :_100b %><br />
+    <%= f.check_box :_100b %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

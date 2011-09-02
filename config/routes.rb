@@ -1,4 +1,20 @@
 Redwing::Application.routes.draw do
+  resources :milestone_tasks
+
+  resources :milestone_validations
+
+  resources :scope_types
+
+  resources :project_types
+
+  resources :work_sites
+
+  resources :carriers
+
+  resources :customers
+
+  resources :my_test_objects
+
   devise_for :roles
 
   devise_for :users

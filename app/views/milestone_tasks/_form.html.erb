@@ -1,0 +1,33 @@
+<%= form_for(@milestone_task) do |f| %>
+  <% if @milestone_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@milestone_task.errors.count, "error") %> prohibited this milestone_task from being saved:</h2>
+
+      <ul>
+      <% @milestone_task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :MilestoneValidationID %><br />
+    <%= f.text_field :MilestoneValidationID %>
+  </div>
+  <div class="field">
+    <%= f.label :ScopeTypeID %><br />
+    <%= f.text_field :ScopeTypeID %>
+  </div>
+  <div class="field">
+    <%= f.label :PercentageID %><br />
+    <%= f.text_field :PercentageID %>
+  </div>
+  <div class="field">
+    <%= f.label :ParentMilestoneTaskID %><br />
+    <%= f.text_field :ParentMilestoneTaskID %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

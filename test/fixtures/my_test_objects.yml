@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  cost: 1.5
+  is_active: false
+  desc: MyText
+
+two:
+  name: MyString
+  cost: 1.5
+  is_active: false
+  desc: MyText

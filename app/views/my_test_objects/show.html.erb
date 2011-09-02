@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @my_test_object.name %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%= @my_test_object.cost %>
+</p>
+
+<p>
+  <b>Is active:</b>
+  <%= @my_test_object.is_active %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @my_test_object.desc %>
+</p>
+
+
+<%= link_to 'Edit', edit_my_test_object_path(@my_test_object) %> |
+<%= link_to 'Back', my_test_objects_path %>

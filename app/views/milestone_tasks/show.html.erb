@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Milestonevalidationid:</b>
+  <%= @milestone_task.MilestoneValidationID %>
+</p>
+
+<p>
+  <b>Scopetypeid:</b>
+  <%= @milestone_task.ScopeTypeID %>
+</p>
+
+<p>
+  <b>Percentageid:</b>
+  <%= @milestone_task.PercentageID %>
+</p>
+
+<p>
+  <b>Parentmilestonetaskid:</b>
+  <%= @milestone_task.ParentMilestoneTaskID %>
+</p>
+
+
+<%= link_to 'Edit', edit_milestone_task_path(@milestone_task) %> |
+<%= link_to 'Back', milestone_tasks_path %>

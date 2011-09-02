@@ -1,0 +1,23 @@
+<h1>Listing milestone_validations</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @milestone_validations.each do |milestone_validation| %>
+  <tr>
+    <td><%= milestone_validation.name %></td>
+    <td><%= link_to 'Show', milestone_validation %></td>
+    <td><%= link_to 'Edit', edit_milestone_validation_path(milestone_validation) %></td>
+    <td><%= link_to 'Destroy', milestone_validation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Milestone validation', new_milestone_validation_path %>

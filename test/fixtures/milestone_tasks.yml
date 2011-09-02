@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  MilestoneValidationID: 1
+  ScopeTypeID: 1
+  PercentageID: 1
+  ParentMilestoneTaskID: 1
+
+two:
+  MilestoneValidationID: 1
+  ScopeTypeID: 1
+  PercentageID: 1
+  ParentMilestoneTaskID: 1

@@ -1,0 +1,29 @@
+<h1>Listing milestone_tasks</h1>
+
+<table>
+  <tr>
+    <th>Milestonevalidationid</th>
+    <th>Scopetypeid</th>
+    <th>Percentageid</th>
+    <th>Parentmilestonetaskid</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @milestone_tasks.each do |milestone_task| %>
+  <tr>
+    <td><%= milestone_task.MilestoneValidationID %></td>
+    <td><%= milestone_task.ScopeTypeID %></td>
+    <td><%= milestone_task.PercentageID %></td>
+    <td><%= milestone_task.ParentMilestoneTaskID %></td>
+    <td><%= link_to 'Show', milestone_task %></td>
+    <td><%= link_to 'Edit', edit_milestone_task_path(milestone_task) %></td>
+    <td><%= link_to 'Destroy', milestone_task, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Milestone task', new_milestone_task_path %>
