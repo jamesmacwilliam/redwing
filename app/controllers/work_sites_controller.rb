@@ -14,16 +14,6 @@ class WorkSitesController < ApplicationController
     end
   end
 
-  # GET /work_sites/1
-  # GET /work_sites/1.xml
-  def show
-    @work_site = WorkSite.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @work_site }
-    end
-  end
 
   # GET /work_sites/new
   # GET /work_sites/new.xml
@@ -73,15 +63,4 @@ class WorkSitesController < ApplicationController
     end
   end
 
-  # DELETE /work_sites/1
-  # DELETE /work_sites/1.xml
-  def destroy
-    @work_site = WorkSite.find(params[:id])
-    @work_site.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(work_sites_url) }
-      format.xml  { head :ok }
-    end
-  end
 end

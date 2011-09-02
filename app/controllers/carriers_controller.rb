@@ -3,6 +3,10 @@ class CarriersController < ApplicationController
   protect_from_forgery
   layout "application"
   
+  def show 
+    redirect_to :action => :index
+  end  
+  
   # GET /carriers
   # GET /carriers.xml
   def index
@@ -11,17 +15,6 @@ class CarriersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @carriers }
-    end
-  end
-
-  # GET /carriers/1
-  # GET /carriers/1.xml
-  def show
-    @carrier = Carrier.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @carrier }
     end
   end
 
@@ -73,15 +66,4 @@ class CarriersController < ApplicationController
     end
   end
 
-  # DELETE /carriers/1
-  # DELETE /carriers/1.xml
-  def destroy
-    @carrier = Carrier.find(params[:id])
-    @carrier.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(carriers_url) }
-      format.xml  { head :ok }
-    end
-  end
 end

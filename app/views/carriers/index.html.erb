@@ -1,8 +1,8 @@
-<h1>Listing carriers</h1>
+<h1>Carriers</h1>
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Carrier Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,9 +11,8 @@
 <% @carriers.each do |carrier| %>
   <tr>
     <td><%= carrier.name %></td>
-    <td><%= link_to 'Show', carrier %></td>
     <td><%= link_to 'Edit', edit_carrier_path(carrier) %></td>
-    <td><%= link_to 'Destroy', carrier, :confirm => 'Are you sure?', :method => :delete %></td>
+
   </tr>
 <% end %>
 </table>
@@ -21,3 +20,4 @@
 <br />
 
 <%= link_to 'New Carrier', new_carrier_path %>
+<%= link_to 'Back to Job', '/home/new' %>

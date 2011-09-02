@@ -1,8 +1,8 @@
-<h1>Listing work_sites</h1>
+<h1>Work Sites</h1>
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Number</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,9 +11,9 @@
 <% @work_sites.each do |work_site| %>
   <tr>
     <td><%= work_site.name %></td>
-    <td><%= link_to 'Show', work_site %></td>
+    
     <td><%= link_to 'Edit', edit_work_site_path(work_site) %></td>
-    <td><%= link_to 'Destroy', work_site, :confirm => 'Are you sure?', :method => :delete %></td>
+    
   </tr>
 <% end %>
 </table>
@@ -21,3 +21,4 @@
 <br />
 
 <%= link_to 'New Work site', new_work_site_path %>
+<%= link_to 'Back to Job', '/home/new' %>

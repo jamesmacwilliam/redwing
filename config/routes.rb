@@ -14,6 +14,8 @@ Redwing::Application.routes.draw do
   resources :customers
 
   resources :my_test_objects
+  
+  resources :jobs
 
   devise_for :roles
 

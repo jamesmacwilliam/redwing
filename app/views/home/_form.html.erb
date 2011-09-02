@@ -1,0 +1,48 @@
+<table align="left" border="0" width="600">
+	<tr>
+		<td>Customer</td>
+		<td>Carrier</td>
+		<td>Sites</td>
+		<td>Project Type</td>		
+	</tr>
+
+<%= form_for(@job) do |f| %>
+	<tr>
+		<td><%= f.select(:CustomerID, @customer.collect {|p| [ "#{p.name}", p.id ] }) 
+		%>
+			
+			<%= link_to 'New', customers_path %>
+		</td>	
+		<td><%= f.select(:CarrierID, @carrier.collect {|p| [ "#{p.name}", p.id ] }) 
+		%>
+			
+			<%= link_to 'New', carriers_path %>
+		</td>	
+		<td><%= f.select(:SiteID, @work_site.collect {|p| [ "#{p.name}", p.id ] }) 
+		%>
+			
+			<%= link_to 'New', work_sites_path %>
+		</td>		
+		<td><%= f.select(:ProjectTypeID, @project_type.collect {|p| [ "#{p.name}", p.id ] }, :onchange=> ) 
+		%>
+			
+			<%= link_to 'New', project_types_path %>
+			<%= observe_field :ProjectTypeID, :url => {:controller => :home, :action => :get_scope}, :update =>  
+			%>
+		</td>	
+		<td>
+			<div id="scope_type_div"> </div>
+		</td>							
+	</tr>
+
+	<tr>
+		<td>
+			  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+		</td>	
+	</tr>
+</table>
+
+<% end %>

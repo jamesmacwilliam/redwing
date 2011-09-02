@@ -7,23 +7,13 @@ class CustomersController < ApplicationController
   # GET /customers.xml
   def index
     @customers = Customer.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @customers }
     end
   end
 
-  # GET /customers/1
-  # GET /customers/1.xml
-  def show
-    @customer = Customer.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @customer }
-    end
-  end
 
   # GET /customers/new
   # GET /customers/new.xml
@@ -31,9 +21,13 @@ class CustomersController < ApplicationController
     @customer = Customer.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.xml  { render :xml => @customer }
     end
+  end
+  
+  def show 
+    redirect_to :action => :index
   end
 
   # GET /customers/1/edit
@@ -73,15 +67,5 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.xml
-  def destroy
-    @customer = Customer.find(params[:id])
-    @customer.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(customers_url) }
-      format.xml  { head :ok }
-    end
-  end
 end
