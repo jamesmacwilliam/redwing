@@ -1,4 +1,8 @@
 class ScopeTypesController < ApplicationController
+  before_filter :authenticate_user!
+  protect_from_forgery
+  layout "application"
+  
   # GET /scope_types
   # GET /scope_types.xml
   def index

@@ -1,4 +1,8 @@
 class WorkSitesController < ApplicationController
+  before_filter :authenticate_user!
+  protect_from_forgery
+  layout "application"
+  
   # GET /work_sites
   # GET /work_sites.xml
   def index

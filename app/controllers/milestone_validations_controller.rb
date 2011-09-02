@@ -1,4 +1,8 @@
 class MilestoneValidationsController < ApplicationController
+  before_filter :authenticate_user!
+  protect_from_forgery
+  layout "application"
+  
   # GET /milestone_validations
   # GET /milestone_validations.xml
   def index

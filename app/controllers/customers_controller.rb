@@ -1,4 +1,8 @@
 class CustomersController < ApplicationController
+  before_filter :authenticate_user!
+  protect_from_forgery
+  layout "application"
+  
   # GET /customers
   # GET /customers.xml
   def index

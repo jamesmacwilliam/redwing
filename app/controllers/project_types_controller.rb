@@ -1,4 +1,8 @@
 class ProjectTypesController < ApplicationController
+  before_filter :authenticate_user!
+  protect_from_forgery
+  layout "application"
+  
   # GET /project_types
   # GET /project_types.xml
   def index

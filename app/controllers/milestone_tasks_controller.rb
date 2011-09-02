@@ -1,4 +1,8 @@
 class MilestoneTasksController < ApplicationController
+  before_filter :authenticate_user!
+  protect_from_forgery
+  layout "application"
+  
   # GET /milestone_tasks
   # GET /milestone_tasks.xml
   def index

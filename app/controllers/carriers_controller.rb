@@ -1,4 +1,8 @@
 class CarriersController < ApplicationController
+  before_filter :authenticate_user!
+  protect_from_forgery
+  layout "application"
+  
   # GET /carriers
   # GET /carriers.xml
   def index
