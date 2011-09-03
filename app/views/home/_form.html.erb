@@ -23,15 +23,16 @@
 			
 			<%= link_to 'New', work_sites_path %>
 		</td>		
-		<td><%= f.select(:ProjectTypeID, @project_type.collect {|p| [ "#{p.name}", p.id ] }, :onchange=> ) 
+		<td><%= f.select(:ProjectTypeID, @project_type.collect {|p| [ "#{p.name}", p.id ] } ) 
 		%>
 			
 			<%= link_to 'New', project_types_path %>
-			<%= observe_field :ProjectTypeID, :url => {:controller => :home, :action => :get_scope}, :update =>  
+			<%= observe_field :job_ProjectTypeID, :frequency => 0.5, :with => "'project_type=' + escape(value)",
+			:url => {:controller => :home, :action => :get_scope}, :update => "scope_type_div"
 			%>
 		</td>	
 		<td>
-			<div id="scope_type_div"> </div>
+			<div id="scope_type_div"> <%= render 'scope_type' %> </div>
 		</td>							
 	</tr>
 
