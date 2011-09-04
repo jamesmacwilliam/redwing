@@ -17,12 +17,13 @@ class ProjectTypesController < ApplicationController
   # GET /project_types/1
   # GET /project_types/1.xml
   def show
-    @project_type = ProjectType.find(params[:id])
+    redirect_to :action => :index
+    #@project_type = ProjectType.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @project_type }
-    end
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.xml  { render :xml => @project_type }
+    #end
   end
 
   # GET /project_types/new
