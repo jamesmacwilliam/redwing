@@ -20,6 +20,7 @@ class HomeController < ActionController::Base
     @work_site = WorkSite.order(:name => 'desc') 
     @project_type = ProjectType.order(:name => 'desc')  
     @scope_type = ScopeType.find_all_by_ProjectTypeID(@project_type.first.id)
+
     
     respond_to do |format|
       format.html # new.html.erb

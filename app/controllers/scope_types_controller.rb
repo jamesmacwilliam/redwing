@@ -17,19 +17,14 @@ class ScopeTypesController < ApplicationController
   # GET /scope_types/1
   # GET /scope_types/1.xml
   def show
-    @scope_type = ScopeType.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @scope_type }
-    end
+    redirect_to :action => :index
   end
 
   # GET /scope_types/new
   # GET /scope_types/new.xml
   def new
     @scope_type = ScopeType.new
-
+    @project_type = ProjectType.order(:name => 'desc')
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @scope_type }
@@ -39,13 +34,14 @@ class ScopeTypesController < ApplicationController
   # GET /scope_types/1/edit
   def edit
     @scope_type = ScopeType.find(params[:id])
+    @project_type = ProjectType.order(:name => 'desc')
   end
 
   # POST /scope_types
   # POST /scope_types.xml
   def create
     @scope_type = ScopeType.new(params[:scope_type])
-
+    @project_type = ProjectType.order(:name => 'desc')
     respond_to do |format|
       if @scope_type.save
         format.html { redirect_to(@scope_type, :notice => 'Scope type was successfully created.') }

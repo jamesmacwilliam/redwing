@@ -1,24 +1,13 @@
 <%= form_for(@scope_type) do |f| %>
-  <% if @scope_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@scope_type.errors.count, "error") %> prohibited this scope_type from being saved:</h2>
-
-      <ul>
-      <% @scope_type.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :Type %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :ProjectTypeID %><br />
-    <%= f.text_field :ProjectTypeID %>
+    <%= f.label 'Project Type' %><br />
+    <%= f.select(:ProjectTypeID, @project_type.collect {|p| [ "#{p.name}", p.id ] }) 
+		%>
   </div>
   <div class="field">
     <%= f.label :_5p %><br />
