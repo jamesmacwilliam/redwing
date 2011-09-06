@@ -1,49 +1,9 @@
-<h1>Listing scope_types</h1>
+<h1>Scope Types</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Projecttypeid</th>
-    <th> 5p</th>
-    <th> 5b</th>
-    <th> 10p</th>
-    <th> 10b</th>
-    <th> 15p</th>
-    <th> 15b</th>
-    <th> 20p</th>
-    <th> 20b</th>
-    <th> 25p</th>
-    <th> 25b</th>
-    <th> 30p</th>
-    <th> 30b</th>
-    <th> 35p</th>
-    <th> 35b</th>
-    <th> 40p</th>
-    <th> 40b</th>
-    <th> 45p</th>
-    <th> 45b</th>
-    <th> 50p</th>
-    <th> 50b</th>
-    <th> 55p</th>
-    <th> 55b</th>
-    <th> 60p</th>
-    <th> 60b</th>
-    <th> 65p</th>
-    <th> 65b</th>
-    <th> 70p</th>
-    <th> 70b</th>
-    <th> 75p</th>
-    <th> 75b</th>
-    <th> 80p</th>
-    <th> 80b</th>
-    <th> 85p</th>
-    <th> 85b</th>
-    <th> 90p</th>
-    <th> 90b</th>
-    <th> 95p</th>
-    <th> 95b</th>
-    <th> 100p</th>
-    <th> 100b</th>
+    <th>Scope Type</th>
+    <th> Project Type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -52,54 +12,13 @@
 <% @scope_types.each do |scope_type| %>
   <tr>
     <td><%= scope_type.name %></td>
-    <td><%= scope_type.ProjectTypeID %></td>
-    <td><%= scope_type._5p %></td>
-    <td><%= scope_type._5b %></td>
-    <td><%= scope_type._10p %></td>
-    <td><%= scope_type._10b %></td>
-    <td><%= scope_type._15p %></td>
-    <td><%= scope_type._15b %></td>
-    <td><%= scope_type._20p %></td>
-    <td><%= scope_type._20b %></td>
-    <td><%= scope_type._25p %></td>
-    <td><%= scope_type._25b %></td>
-    <td><%= scope_type._30p %></td>
-    <td><%= scope_type._30b %></td>
-    <td><%= scope_type._35p %></td>
-    <td><%= scope_type._35b %></td>
-    <td><%= scope_type._40p %></td>
-    <td><%= scope_type._40b %></td>
-    <td><%= scope_type._45p %></td>
-    <td><%= scope_type._45b %></td>
-    <td><%= scope_type._50p %></td>
-    <td><%= scope_type._50b %></td>
-    <td><%= scope_type._55p %></td>
-    <td><%= scope_type._55b %></td>
-    <td><%= scope_type._60p %></td>
-    <td><%= scope_type._60b %></td>
-    <td><%= scope_type._65p %></td>
-    <td><%= scope_type._65b %></td>
-    <td><%= scope_type._70p %></td>
-    <td><%= scope_type._70b %></td>
-    <td><%= scope_type._75p %></td>
-    <td><%= scope_type._75b %></td>
-    <td><%= scope_type._80p %></td>
-    <td><%= scope_type._80b %></td>
-    <td><%= scope_type._85p %></td>
-    <td><%= scope_type._85b %></td>
-    <td><%= scope_type._90p %></td>
-    <td><%= scope_type._90b %></td>
-    <td><%= scope_type._95p %></td>
-    <td><%= scope_type._95b %></td>
-    <td><%= scope_type._100p %></td>
-    <td><%= scope_type._100b %></td>
-    <td><%= link_to 'Show', scope_type %></td>
+    <td><%= scope_type.project_type.name %></td>
     <td><%= link_to 'Edit', edit_scope_type_path(scope_type) %></td>
-    <td><%= link_to 'Destroy', scope_type, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Scope type', new_scope_type_path %>
+<%= link_to 'New Scope Type', new_scope_type_path %>
+<%= link_to 'Back to Jobs', jobs_path %>
