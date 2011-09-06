@@ -1,0 +1,10 @@
+.alert
+{
+	font-weight: bold;
+	color: red;
+}
+.notice
+{
+	font-weight: bold;
+	color: green;
+}

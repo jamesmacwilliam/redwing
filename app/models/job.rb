@@ -4,4 +4,6 @@ class Job < ActiveRecord::Base
   belongs_to :work_site, :foreign_key => :WorkSiteID
   belongs_to :project_type, :foreign_key => :ProjectTypeID
   belongs_to :scope_type, :foreign_key => :ScopeTypeID
+  
+  validates_presence_of :CarrierID, :CustomerID, :ProjectTypeID, :SiteID, :ScopeTypeID
 end

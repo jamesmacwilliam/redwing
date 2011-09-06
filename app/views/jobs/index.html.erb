@@ -1,0 +1,26 @@
+
+<h1>Jobs</h1>
+
+
+<%= link_to "New", new_job_path %>
+
+<br />
+<table align="left" border="0" width="600">
+  <tr>
+    <th>Customer</th>
+    <th>Carrier</th>
+    <th>Site</th>
+    <th>Project</th>
+    <th>Scope</th>
+  </tr>
+<% @jobs.each do |job| %>  
+
+  <tr>
+    <td><%= job.customer.name %></td>
+    <td><%= job.carrier.name %></td>
+    <td><%= job.work_site.name %></td>
+    <td><%= job.project_type.name %></td>
+    <td><%= job.scope_type.name %></td>
+  </tr>
+<% end %>
+</table>

@@ -7,8 +7,8 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="notice"><%= notice || params[:notice] %></p>
+<p class="alert"><%= alert || params[:alert] %></p>
 <%= yield %>
 
 </body>

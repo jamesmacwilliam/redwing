@@ -46,7 +46,7 @@ Redwing::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-  root :to => 'home#index'
+  root :to => 'jobs#index'
   match ':controller(/:action(/:id))'
   match ':controller(/:action(/:id(.:format)))'  
 

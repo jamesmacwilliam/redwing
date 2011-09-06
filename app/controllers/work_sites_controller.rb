@@ -14,6 +14,9 @@ class WorkSitesController < ApplicationController
     end
   end
 
+  def show
+    redirect_to :action => :index
+  end
 
   # GET /work_sites/new
   # GET /work_sites/new.xml
