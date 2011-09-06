@@ -1,14 +1,17 @@
 <table align="left" border="0" width="600">
-	<tr>
-		<td>Customer</td>
-		<td>Carrier</td>
-		<td>Sites</td>
-		<td>Project Type</td>		
-	</tr>
+
 
 <%= form_for(@job) do |f| %>
 	<tr>
-		<td><%= f.select(:CustomerID, @customer.collect {|p| [ "#{p.name}", p.id ] }) 
+		<td><%= f.label :CustomerID, 'Customer' %></td>
+		<td><%= f.label :CarrierID, 'Carrier' %></td>
+		<td><%= f.label :SiteID, 'Sites' %></td>
+		<td><%= f.label :ProjectTypeID, 'Project Type' %></td>
+		<td><%= f.label :ScopeTypeID, 'Scope Type' %></td>			
+	</tr>
+	<tr>
+		<td>
+			<%= f.select(:CustomerID, @customer.collect {|p| [ "#{p.name}", p.id ] }) 
 		%>
 			
 			<%= link_to 'New', customers_path %>
@@ -28,12 +31,12 @@
 			
 			<%= link_to 'New', project_types_path %>
 			<%= observe_field :job_ProjectTypeID, :frequency => 0.5, :with => "'project_type=' + escape(value)",
-			:url => {:controller => :home, :action => :get_scope}, :update => "scope_type_div"
+			:url => {:action => :get_scope}, :update => "scope_type_div"
 			%>
 		</td>	
-		<td>
-			<div id="scope_type_div"> <%= render 'scope_type' %> </div>
-			<%= link_to 'New', scope_types_path %>
+		<td id="scope_type_div" > 
+			 <%= render 'scope_type' %> 
+			 
 		</td>							
 	</tr>
 
