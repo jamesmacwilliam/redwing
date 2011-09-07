@@ -1,3 +1,6 @@
-<%= select(:job, :ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] } ) 
+		  <%= select(:job, :ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] }) 
 		%>
 		<%= link_to 'New', scope_types_path %>
+					<%= observe_field :job_ScopeTypeID, :frequency => 0.5, :with => "'scope_type=' + escape(value)",
+			:url => {:action => :store_scope}, :update => "scope_store"
+			%><span id="scope_store" ></span>
