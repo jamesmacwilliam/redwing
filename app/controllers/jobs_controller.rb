@@ -60,6 +60,8 @@ class JobsController < ActionController::Base
     arr
   end
   
+  
+  
   def show 
     @job = Job.find(params[:id])
     @customer = Customer.order(:name => 'desc')

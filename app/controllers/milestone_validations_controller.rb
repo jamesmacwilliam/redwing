@@ -17,12 +17,7 @@ class MilestoneValidationsController < ApplicationController
   # GET /milestone_validations/1
   # GET /milestone_validations/1.xml
   def show
-    @milestone_validation = MilestoneValidation.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @milestone_validation }
-    end
+    redirect_to :action => :index
   end
 
   # GET /milestone_validations/new

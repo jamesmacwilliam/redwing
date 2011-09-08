@@ -12,6 +12,7 @@
     <td>Site</td>
     <td>Project</td>
     <td>Scope</td>
+    <td></td>
   </tr>
 <% @jobs.each do |job| %>  
 
@@ -21,6 +22,7 @@
     <td><%= job.work_site.name %></td>
     <td><%= job.project_type.name %></td>
     <td><%= job.scope_type.name %></td>
+    <td><%= link_to 'Edit', job_path(job) %></td>
   </tr>
 <% end %>
 </table>

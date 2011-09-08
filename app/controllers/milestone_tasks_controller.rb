@@ -17,19 +17,16 @@ class MilestoneTasksController < ApplicationController
   # GET /milestone_tasks/1
   # GET /milestone_tasks/1.xml
   def show
-    @milestone_task = MilestoneTask.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @milestone_task }
-    end
+    redirect_to :action => :index
   end
 
   # GET /milestone_tasks/new
   # GET /milestone_tasks/new.xml
   def new
     @milestone_task = MilestoneTask.new
-
+    @scope_type = ScopeType.order(:name => 'desc')
+    @milestone_validation = MilestoneValidation.order(:name => 'desc')
+    @parent_task = MilestoneTask.find_all_by_scope_type(@scope_type.first.id)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @milestone_task }

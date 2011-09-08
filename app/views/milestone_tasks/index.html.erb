@@ -1,11 +1,11 @@
-<h1>Listing milestone_tasks</h1>
+<h1>Listing Milestone Task</h1>
 
 <table>
   <tr>
-    <th>Milestonevalidationid</th>
-    <th>Scopetypeid</th>
-    <th>Percentageid</th>
-    <th>Parentmilestonetaskid</th>
+    <th>Descr</th>
+    <th>Scope Type</th>
+    <th>Percentage</th>
+    <th>Parent Task</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,17 +13,16 @@
 
 <% @milestone_tasks.each do |milestone_task| %>
   <tr>
-    <td><%= milestone_task.MilestoneValidationID %></td>
-    <td><%= milestone_task.ScopeTypeID %></td>
+    <td><%= milestone_task.milestone_validation.name %></td>
+    <td><%= milestone_task.scope_type.name %></td>
     <td><%= milestone_task.PercentageID %></td>
-    <td><%= milestone_task.ParentMilestoneTaskID %></td>
-    <td><%= link_to 'Show', milestone_task %></td>
+    <td><%= milestone_task.parent_task.milestone_validation.name if milestone_task.parent_task %></td>
     <td><%= link_to 'Edit', edit_milestone_task_path(milestone_task) %></td>
-    <td><%= link_to 'Destroy', milestone_task, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Milestone task', new_milestone_task_path %>
+<%= link_to 'New', new_milestone_task_path %>
+<%= link_to 'Back to Job', new_job_path %>

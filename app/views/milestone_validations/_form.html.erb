@@ -1,15 +1,4 @@
 <%= form_for(@milestone_validation) do |f| %>
-  <% if @milestone_validation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@milestone_validation.errors.count, "error") %> prohibited this milestone_validation from being saved:</h2>
-
-      <ul>
-      <% @milestone_validation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :name %><br />
