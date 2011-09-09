@@ -8,6 +8,7 @@ class MilestoneTasksController < ApplicationController
   def index
     @milestone_tasks = MilestoneTask.all
 
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @milestone_tasks }
@@ -26,7 +27,11 @@ class MilestoneTasksController < ApplicationController
     @milestone_task = MilestoneTask.new
     @scope_type = ScopeType.order(:name => 'desc')
     @milestone_validation = MilestoneValidation.order(:name => 'desc')
-    @parent_task = MilestoneTask.find_all_by_scope_type(@scope_type.first.id)
+    if @scope_type.first    
+      @parent_task = MilestoneTask.find_all_by_scope_type(@scope_type.first.id) 
+    else
+      @parent_task = MilestoneTask.all
+    end    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @milestone_task }

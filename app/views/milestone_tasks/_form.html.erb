@@ -9,17 +9,19 @@
   </div>
   <div class="field">
     <%= f.label :PercentageID, 'Milestone Percentage' %><br />
-    <%= f.select(:PercentageID, @milestone_validation.collect {|p| [ "#{p.name}", p.id ] }) 
+    <%= f.select(:PercentageID, options_for_select(Percentage::PERCENTAGES) ) 
 		%>
   </div>  
   <div class="field">
     <%= f.label :ScopeTypeID, 'Scope Type' %><br />
-    <%= f.text_field :ScopeTypeID %>
+    <%= f.select(:ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] }) 
+		%>    
   </div>
 
   <div class="field">
     <%= f.label :ParentMilestoneTaskID, 'Parent Task' %><br />
-    <%= f.text_field :ParentMilestoneTaskID %>
+    <%= f.select(:ParentMilestoneTaskID, @parent_task.collect {|p| [ "#{p.milestone_validation.name}", p.id ] }) 
+		%>   
   </div>
   <div class="actions">
     <%= f.submit %>
