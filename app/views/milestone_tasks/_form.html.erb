@@ -16,12 +16,14 @@
     <%= f.label :ScopeTypeID, 'Scope Type' %><br />
     <%= f.select(:ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] }) 
 		%>    
+			<%= observe_field :milestone_task_ScopeTypeID, :frequency => 0.5, :with => "'parent_task=' + escape(value)",
+			:url => {:action => :set_parent_task}, :update => "p_task"
+			%>		
   </div>
 
-  <div class="field">
-    <%= f.label :ParentMilestoneTaskID, 'Parent Task' %><br />
-    <%= f.select(:ParentMilestoneTaskID, @parent_task.collect {|p| [ "#{p.milestone_validation.name}", p.id ] }) 
-		%>   
+  <div class="field" >
+    <%= f.label :ParentMilestoneTaskID, 'Parent Task' %><br />  	
+<span id="p_task" ><%= render 'parent_task' %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

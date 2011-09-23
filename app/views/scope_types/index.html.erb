@@ -7,6 +7,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @scope_types.each do |scope_type| %>
@@ -14,6 +15,8 @@
     <td><%= scope_type.name %></td>
     <td><%= scope_type.project_type.name %></td>
     <td><%= link_to 'Edit', edit_scope_type_path(scope_type) %></td>
+    <td><%= link_to 'Tasks', milestone_tasks_path %></td>
+    
   </tr>
 <% end %>
 </table>

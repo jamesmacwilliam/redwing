@@ -1,0 +1,2 @@
+module MilestoneRecordsHelper
+end

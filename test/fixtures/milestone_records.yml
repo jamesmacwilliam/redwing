@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  jobs_id: 1
+  milestone_tasks_id: 1
+  date_completed: 2011-09-17
+
+two:
+  jobs_id: 1
+  milestone_tasks_id: 1
+  date_completed: 2011-09-17

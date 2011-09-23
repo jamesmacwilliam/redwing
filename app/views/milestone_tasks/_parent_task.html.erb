@@ -1,0 +1,9 @@
+
+    <%= select(:milestone_task, :ParentMilestoneTaskID, @parent_task.collect {|p| [ "#{p.milestone_validation.name}", p.id ] },:include_blank => true) 
+		%>   
+		
+
+			<%= observe_field :milestone_task_ParentMilestoneTaskID, :frequency => 0.5, :with => "'parent_milestone=' + escape(value)",
+			:url => {:action => :store_parent_task}, :update => "p_task_store"
+			%>	
+			<span id="p_task_store" ><%= render 'blank' %></span>

@@ -1,0 +1,28 @@
+
+<table>
+<% if @records %>	
+<tr>
+	<td style="font-weight:bold;" >
+		Record Type	
+	</td>
+	
+	<td style="font-weight:bold;" >
+		Date Completed
+	</td>
+</tr>
+	<% form_for(@records) do |f| %>
+		<tr>
+			<td>
+				<%= #f.milestone_task.milestone_validation.name if f.milestone_task and f.milestone_task.milestone_validation 
+				%>
+			</td>
+			
+			<td>
+				
+			</td>
+			
+		</tr>
+	<% end %>
+<% end %>	
+</table>
+	

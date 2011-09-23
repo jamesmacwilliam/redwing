@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110902195119) do
+ActiveRecord::Schema.define(:version => 20110917174639) do
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20110902195119) do
     t.string   "PONumber"
     t.float    "amount_billable"
     t.boolean  "is_void"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "milestone_records", :force => true do |t|
+    t.integer  "jobs_id"
+    t.integer  "milestone_tasks_id"
+    t.date     "date_completed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

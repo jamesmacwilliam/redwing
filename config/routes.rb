@@ -1,4 +1,6 @@
 Redwing::Application.routes.draw do
+  resources :milestone_records
+
   resources :milestone_tasks
 
   resources :milestone_validations
