@@ -10,19 +10,20 @@
 		Date Completed
 	</td>
 </tr>
-	<% form_for(@records) do |f| %>
+	<% for f in @records %>
+	<% @milestone_record = f %>
 		<tr>
 			<td>
-				<%= #f.milestone_task.milestone_validation.name if f.milestone_task and f.milestone_task.milestone_validation 
+				<%= f.milestone_task.milestone_validation.name if f.milestone_task and f.milestone_task.milestone_validation 
 				%>
 			</td>
 			
 			<td>
-				
+
+				<%= in_place_editor_field :milestone_record, :date_completed, {}, {:nil_content_replacement => '(add comment)' } %>
+
 			</td>
-			
 		</tr>
 	<% end %>
 <% end %>	
 </table>
-	

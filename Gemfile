@@ -13,6 +13,8 @@ gem 'mysql2', '<0.3'
 
 gem 'cancan', '1.6.5'
 
+gem 'in_place_editing', '1.1.2'
+
 #gem 'prototype_legacy_helper', '0.0.0', :git => 'git://github.com/rails/prototype_legacy_helper.git'
 
 # Use unicorn as the web server
