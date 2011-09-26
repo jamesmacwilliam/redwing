@@ -1,4 +1,4 @@
-require 'lib/extensions'
+
 
 class JobsController < ActionController::Base
   before_filter :authenticate_user!, :except => [:index]
@@ -6,8 +6,11 @@ class JobsController < ActionController::Base
   protect_from_forgery
   layout "application"
   #test
+   
   
   def set_milestone_record_date_completed
+    
+    render :text => "click to edit" and return if params[:value] == ""
     milestone_record = MilestoneRecord.find(params[:id])
     if milestone_record.update_attribute(:date_completed, params[:value])   
       render :text => params[:value]
@@ -16,9 +19,14 @@ class JobsController < ActionController::Base
     end  
   end
   
+  
   def get_milestone_record_date_completed
     milestone_record = MilestoneRecord.find(params[:id])
+    if milestone_record.date_completed
     render :text => milestone_record.date_completed
+    else
+      render :text => "click to edit"
+    end
   end
   
   def delete_records(recs)

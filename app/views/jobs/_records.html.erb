@@ -1,4 +1,4 @@
-
+ 
 <table>
 <% if @records %>	
 <tr>
@@ -11,7 +11,9 @@
 	</td>
 </tr>
 	<% for f in @records %>
-	<% @milestone_record = f %>
+	<% @milestone_record = f
+		@milestone_record.date_completed = "click to edit" if f.date_completed_is_nil_or_blank
+	%>
 		<tr>
 			<td>
 				<%= f.milestone_task.milestone_validation.name if f.milestone_task and f.milestone_task.milestone_validation 
@@ -20,7 +22,7 @@
 			
 			<td>
 
-				<%= in_place_editor_field :milestone_record, :date_completed, {}, {:nil_content_replacement => '(add comment)' } %>
+				<%= in_place_editor_field :milestone_record, :date_completed %>
 
 			</td>
 		</tr>
