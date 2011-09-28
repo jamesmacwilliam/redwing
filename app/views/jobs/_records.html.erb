@@ -7,12 +7,12 @@
 	</td>
 	
 	<td style="font-weight:bold;" >
-		Date Completed
+		Date Completed <span style="font-size:9px; font-weight:normal; vertical-align: middle;" >(MM/DD/YYYY)</span>
 	</td>
 </tr>
 	<% for f in @records %>
 	<% @milestone_record = f
-		@milestone_record.date_completed = "click to edit" if f.date_completed_is_nil_or_blank
+		@milestone_record.date_completed = JobsController::EDIT_TEXT if f.date_completed_is_nil_or_blank
 	%>
 		<tr>
 			<td>
@@ -20,12 +20,15 @@
 				%>
 			</td>
 			
-			<td>
+			<td style="padding-left:20px;">
 
-				<%= in_place_editor_field :milestone_record, :date_completed %>
+				<%= in_place_editor_field :milestone_record, :date_completed %> 
 
 			</td>
 		</tr>
 	<% end %>
 <% end %>	
 </table>
+<% if @error %>
+<span style="color:red; font-weight:bold;" ><%= @error %></span>
+<% end %>

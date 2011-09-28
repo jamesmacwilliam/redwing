@@ -1,4 +1,4 @@
-		  <%= select(:job, :ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] }) 
+		  <%= select(:job, :ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] },{},{:onchange=> "ruSure()"}) 
 		%>
 		<%= link_to 'New', scope_types_path %>
 					<%= observe_field :job_ScopeTypeID, :frequency => 0.5, :with => "'scope_type=' + escape(value)",
