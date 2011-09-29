@@ -21,9 +21,16 @@ class MilestoneRecord < ActiveRecord::Base
       where(:milestone_tasks_id => milestone_tasks_id)
     end
     
-    
     def find_by_jobs_id(jobs_id)
       where(:jobs_id => jobs_id).first
+    end
+    
+    def find_all_by_jobs_id_with_join_and_exclude(jobs_id, parent_arr)
+      joins(:milestone_task).where(:jobs_id => jobs_id).where("milestone_records.id not in(?)",parent_arr).order("milestone_tasks.PercentageID asc")
+    end
+    
+    def find_all_by_jobs_id(jobs_id)
+      where(:jobs_id => jobs_id)
     end
     
   end

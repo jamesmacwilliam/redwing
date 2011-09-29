@@ -1,18 +1,19 @@
 		  <%= select(:job, :ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] },{},{:onchange=> "ruSure()"}) 
 		%>
+		<br />
 		<%= link_to 'New', scope_types_path %>
 					<%= observe_field :job_ScopeTypeID, :frequency => 0.5, :with => "'scope_type=' + escape(value)",
 			:url => {:action => :store_scope}, :update => "div_records"
 			%> <span id="scope_store" ></span>
-			
-		</td>							
-	</tr>
 
+
+<% content_for(:record_list) do %>
 	<tr>
-		<td colspan="5" id="div_records" >
+		<td colspan="6" id="div_records" >
 			  
    <%= render 'records' %>
   
 
 		</td>	
 	</tr>
+<% end %>

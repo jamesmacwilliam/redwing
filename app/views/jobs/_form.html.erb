@@ -6,6 +6,12 @@ if(!confirm("Are you sure you want to change the scope? (doing so will delete an
 document.forms[0].reset();
 }
 }
+function before_change()
+{
+if (document.getElementById("job_amount_billable").value != "")
+{alert("Before changing this value, check that nothing has been billed against it.  If it has, add an additional scope of work to it instead.");}
+	
+}
 </script>
 <table align="left" border="0" width="700">
 
@@ -16,28 +22,29 @@ document.forms[0].reset();
 		<td><%= f.label :CarrierID, 'Carrier' %></td>
 		<td><%= f.label :SiteID, 'Sites' %></td>
 		<td><%= f.label :ProjectTypeID, 'Project Type' %></td>
-		<td><%= f.label :ScopeTypeID, 'Scope Type' %></td>			
+		<td><%= f.label :ScopeTypeID, 'Scope Type' %></td>
+		<td><%= f.label :amount_billable, 'Amount Billable' %></td>			
 	</tr>
 	<tr>
 		<td>
 			<%= f.select(:CustomerID, @customer.collect {|p| [ "#{p.name}", p.id ] }) 
 		%>
-			
+			<br />
 			<%= link_to 'New', customers_path %>
 		</td>	
 		<td><%= f.select(:CarrierID, @carrier.collect {|p| [ "#{p.name}", p.id ] }) 
 		%>
-			
+			<br />
 			<%= link_to 'New', carriers_path %>
 		</td>	
 		<td><%= f.select(:SiteID, @work_site.collect {|p| [ "#{p.name}", p.id ] }) 
 		%>
-			
+			<br />
 			<%= link_to 'New', work_sites_path %>
 		</td>		
 		<td><%= f.select(:ProjectTypeID, @project_type.collect {|p| [ "#{p.name}", p.id ] } ) 
 		%>
-			
+			<br />
 			<%= link_to 'New', project_types_path %>
 			<%= observe_field :job_ProjectTypeID, :frequency => 0.5, :with => "'project_type=' + escape(value)",
 			:url => {:action => :get_scope}, :update => "scope_type_div"
@@ -45,11 +52,14 @@ document.forms[0].reset();
 		</td>	
 		<td id="scope_type_div" > 
 			 <%= render 'scope_type' %> 
-			 
-
-
+		</td>	 
+		<td>
+			<%= f.text_field :amount_billable, :size=> 9, :onfocusin => "before_change();" %> <br /> &nbsp;
+		</td>
+	</tr>	
+	<%= yield :record_list %>
 	<tr>
-		<td colspan="5" >
+		<td colspan="6" >
 			  <div class="actions">
     <%= f.submit %>
   </div>

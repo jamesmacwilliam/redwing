@@ -1,3 +1,4 @@
+
 .alert
 {
 	font-weight: bold;
@@ -22,6 +23,7 @@ body {
 	background-repeat:repeat-x;	
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:12px;
+	color: white;
 }
 
 a:link { color:#CCCCCC; text-decoration: none; }
@@ -132,6 +134,11 @@ a:active { text-decoration: underline; color: #CCCCCC; }
 	margin-top:9px;
 	list-style:none;
 
+}
+#primary_div {
+	width:755px;
+	float:right;
+	margin-top:9px;
 }
 
 	#nav li {
@@ -474,20 +481,18 @@ table {
 
 
 th {
-	background-image:url(/images/chrome.png); background-repeat:repeat-x;
+	background-color: transparent;
 	height: 20px;
 	padding-left: 11px;
 	padding-right: 11px;
-	color: #000;
+	color: white;
 	text-align: left;
-	border-left: 1px solid #FFFFFF;
-	border-right: 1px solid #FFFFFF;
+
 }
 
 tr {
 	height: 30px;
-	border-right: 1px solid #FFFFFF;
-	background-color: #000000;
+	background-color: transparent;
 
 }
 
@@ -495,10 +500,8 @@ td {
 	padding-left: 11px;
 	padding-right: 11px;
 	/* border-left: 1px solid #FFE1C3; */
-	border-left: 1px solid #FFF;
-	border-bottom: solid 1px #ffffff;
-	border-right: 1px solid #FFFFFF;
-	background-color: #FAFAFA;
+	color:white;
+	background-color: transparent;
 
 }
 

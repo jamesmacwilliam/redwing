@@ -1,5 +1,6 @@
-<h1>Listing customers</h1>
-
+<% content_for(:header) do %>
+Customers
+<% end %>
 <table>
   <tr>
     <th>Name</th>
@@ -18,5 +19,5 @@
 
 <br />
 
-<%= link_to 'New Customer', new_customer_path %>
+<%= link_to 'New Customer', new_customer_path %> | 
 <%= link_to 'Back to Job', new_job_path %>

@@ -5,5 +5,6 @@ class Job < ActiveRecord::Base
   belongs_to :project_type, :foreign_key => :ProjectTypeID
   belongs_to :scope_type, :foreign_key => :ScopeTypeID
   
-  validates_presence_of :CarrierID, :CustomerID, :ProjectTypeID, :SiteID, :ScopeTypeID
+  validates_presence_of :CarrierID, :CustomerID, :ProjectTypeID, :SiteID, :ScopeTypeID, :amount_billable
+  validates_numericality_of :amount_billable
 end

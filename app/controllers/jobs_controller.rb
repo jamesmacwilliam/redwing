@@ -1,6 +1,6 @@
 
 
-class JobsController < ActionController::Base
+class JobsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   in_place_edit_for :milestone_record, :date_completed
   protect_from_forgery
@@ -37,22 +37,17 @@ class JobsController < ActionController::Base
     end
   end
   
-  def delete_records(recs)
-    recs.each do |r|
-      r.destroy
-    end
-  end
-  
   def set_milestone_records(scope_type)
     return unless scope_type and session[:job_id]
     recs = MilestoneTask.find_all_by_scope_type(scope_type)
     job = Job.find(session[:job_id])
     return unless job
-    @records = MilestoneRecord.find_all_by_jobs_id(job.id)
+    @records = MilestoneRecord.where(:jobs_id => job.id)
     if @records and @records.first
       scope_test = job.ScopeTypeID
       #need alert before this action!
       if scope_test == scope_type
+        @records = order_rows(job.id)
         return
       else  
         delete_records(@records)
@@ -60,6 +55,7 @@ class JobsController < ActionController::Base
     end
     mid_arr = []
     if job and job.id
+      
       recs.each do |r|
         
         ins = {
@@ -70,10 +66,14 @@ class JobsController < ActionController::Base
         mr = MilestoneRecord.new(ins)
         mr.save!
         mid_arr << r.id
+      end
     end
-    end
-    @records = MilestoneRecord.find_all_by_milestone_tasks_id(mid_arr)
+
+    @records = order_rows(job.id)
+    
   end
+  
+  
   
   def store_scope
     session[:scope_type] = params[:scope_type] if request.xhr? && params[:scope_type]
@@ -133,7 +133,7 @@ class JobsController < ActionController::Base
         format.html { redirect_to(@job, :notice => 'Job was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to :action => "show", :id => params[:id], :alert => "Please ensure that all fields are valid and try again." }
         format.xml  { render :xml => @milestone_validation.errors, :status => :unprocessable_entity }
       end
     end
@@ -161,7 +161,7 @@ class JobsController < ActionController::Base
   end
   
   def edit
-    redirect_to :action => :show
+    redirect_to :action => :show, :id => params[:id]
   end
   
   def get_scope
