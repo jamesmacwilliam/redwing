@@ -12,7 +12,7 @@
 </tr>
 	<% for f in @records %>
 	<% @milestone_record = f
-		@milestone_record.date_completed = JobsController::EDIT_TEXT if f.date_completed_is_nil_or_blank
+		@milestone_record.date_completed = JobsController::EDIT_TEXT #if f.date_completed_is_nil_or_blank
 	%>
 		<tr>
 			<td>
