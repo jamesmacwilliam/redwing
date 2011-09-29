@@ -8,6 +8,24 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Redwing
   class Application < Rails::Application
+    
+ protected  
+
+  def log_error(exception) 
+    super(exception)
+
+    begin
+      ErrorMailer.deliver_snapshot(
+        exception, 
+        clean_backtrace(exception), 
+        @session.instance_variable_get("@data"), 
+        @params, 
+        @request.env)
+    rescue => e
+      logger.error(e)
+    end
+  end
+      
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
