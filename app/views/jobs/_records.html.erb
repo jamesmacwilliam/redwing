@@ -1,4 +1,4 @@
- 
+
 <table>
 <% if @records %>	
 <tr>
@@ -10,9 +10,12 @@
 		Date Completed <span style="font-size:9px; font-weight:normal; vertical-align: middle;" >(MM/DD/YYYY)</span>
 	</td>
 </tr>
+<tr id="spinner" style="display:none; border:none;" ><td colspan=2>
+		<%= image_tag("spinner.gif", :style=> "margin-left:100px;")%> 
+</td>
 	<% for f in @records %>
 	<% @milestone_record = f
-		@milestone_record.date_completed = JobsController::EDIT_TEXT #if f.date_completed_is_nil_or_blank
+		@milestone_record.date_completed = JobsController::EDIT_TEXT if f.date_completed_is_nil_or_blank
 	%>
 		<tr>
 			<td>

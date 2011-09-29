@@ -3,8 +3,11 @@
 		<br />
 		<%= link_to 'New', scope_types_path %>
 					<%= observe_field :job_ScopeTypeID, :frequency => 0.5, :with => "'scope_type=' + escape(value)",
-			:url => {:action => :store_scope}, :update => "div_records"
-			%> <span id="scope_store" ></span>
+			:url => {:action => :store_scope}, :update => "div_records",:loading => "document.getElementById('spinner').style.display='block'",
+	  		 			:loaded => "document.getElementById('spinner').style.display='none'"
+			%> 
+
+			<span id="scope_store" ></span>
 
 
 <% content_for(:record_list) do %>
