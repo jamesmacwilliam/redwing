@@ -11,6 +11,15 @@ Redwing::Application.configure do
 
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
+  
+  ActionMailer::Base.smtp_settings = {
+  :address => 'mail.usrenewable.com',
+  :port => 587,
+  :domain => 'usrenewable.com',
+  :authentication => :plain,
+  :user_name => 'jmacwilliam@usrenewable.com',
+  :password => 'minihulkster'
+  }
 
   # For nginx:
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
