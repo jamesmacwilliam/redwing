@@ -16,7 +16,7 @@ Redwing::Application.configure do
   :address => 'mail.usrenewable.com',
   :port => 587,
   :domain => 'usrenewable.com',
-  :authentication => :plain,
+  :authentication => :login,
   :user_name => 'jmacwilliam@usrenewable.com',
   :password => 'minihulkster'
   }
