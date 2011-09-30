@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     p = params[:roles_user]
     recs = RolesUser.where(:user_id => p[:user_id],:role_id => p[:role_id])
-    if recs
+    if recs and recs.first
       @user = recs.first
       @user.attributes = p
     end
