@@ -1,14 +1,14 @@
 The following views must be added after bundle exec rake db:migrate
 
-create view ordered_records as
-select mr.*,(mr.id + (mt.PercentageID * 1000)) as 'rank' from milestone_records mr inner join milestone_tasks mt on mr.milestone_tasks_id = mt.id
+alter view ordered_records as
+select mr.*,cast((mr.id + (cast(mt.PercentageID as SIGNED) * 1000)) as SIGNED) as 'rank' from milestone_records mr inner join milestone_tasks mt on mr.milestone_tasks_id = mt.id
 where mr.id not in (select id from record_parents)
 union all
 select * from record_parents
 
-create view record_parents as
-select mr2.*, ((mr.id + (mt.PercentageID * 1000)) + 1) as 'rank' from milestone_records mr inner join milestone_tasks mt on mr.milestone_tasks_id = mt.id 
-inner join milestone_records mr2 on mt.ParentMilestoneTaskID = mr2.milestone_tasks_id and mr2.jobs_id = mr.jobs_id
+alter view record_parents as
+select mr2.*, cast(((mr.id + (cast(mt2.PercentageID as SIGNED) * 1000)) + 1) as SIGNED) as 'rank' from milestone_records mr inner join milestone_tasks mt on mr.milestone_tasks_id = mt.id 
+inner join milestone_records mr2 on mt.ParentMilestoneTaskID = mr2.milestone_tasks_id and mr2.jobs_id = mr.jobs_id inner join milestone_tasks mt2 on mr2.milestone_tasks_id = mt2.id
 
 
 alter table milestone_records change date_completed date_completed varchar(100) null;

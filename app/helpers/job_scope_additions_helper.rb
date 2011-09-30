@@ -1,0 +1,2 @@
+module JobScopeAdditionsHelper
+end

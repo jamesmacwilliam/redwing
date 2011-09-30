@@ -1,0 +1,25 @@
+<%= form_for(@job_scope_addition) do |f| %>
+  <% if @job_scope_addition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job_scope_addition.errors.count, "error") %> prohibited this job_scope_addition from being saved:</h2>
+
+      <ul>
+      <% @job_scope_addition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ScopeTypeID %><br />
+    <%= f.text_field :ScopeTypeID %>
+  </div>
+  <div class="field">
+    <%= f.label :JobID %><br />
+    <%= f.text_field :JobID %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

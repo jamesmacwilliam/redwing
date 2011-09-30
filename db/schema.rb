@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917174639) do
+ActiveRecord::Schema.define(:version => 20110930232904) do
+
+  create_table "addition_task_records", :force => true do |t|
+    t.integer  "jobs_id"
+    t.integer  "milestone_tasks_id"
+    t.string   "date_completed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "carriers", :force => true do |t|
     t.string   "name"
@@ -20,6 +28,13 @@ ActiveRecord::Schema.define(:version => 20110917174639) do
 
   create_table "customers", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_scope_additions", :force => true do |t|
+    t.integer  "ScopeTypeID"
+    t.integer  "JobID"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20110917174639) do
   create_table "milestone_records", :force => true do |t|
     t.integer  "jobs_id"
     t.integer  "milestone_tasks_id"
-    t.date     "date_completed"
+    t.string   "date_completed",     :limit => 100
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,10 +85,30 @@ ActiveRecord::Schema.define(:version => 20110917174639) do
     t.datetime "updated_at"
   end
 
+  create_table "ordered_records", :id => false, :force => true do |t|
+    t.integer  "id",                                :default => 0, :null => false
+    t.integer  "jobs_id"
+    t.integer  "milestone_tasks_id"
+    t.string   "date_completed",     :limit => 100
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rank",               :limit => 8
+  end
+
   create_table "project_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "record_parents", :id => false, :force => true do |t|
+    t.integer  "id",                                :default => 0, :null => false
+    t.integer  "jobs_id"
+    t.integer  "milestone_tasks_id"
+    t.string   "date_completed",     :limit => 100
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rank",               :limit => 8
   end
 
   create_table "roles", :force => true do |t|

@@ -1,0 +1,25 @@
+<h1>Listing job_scope_additions</h1>
+
+<table>
+  <tr>
+    <th>Scopetypeid</th>
+    <th>Jobid</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @job_scope_additions.each do |job_scope_addition| %>
+  <tr>
+    <td><%= job_scope_addition.ScopeTypeID %></td>
+    <td><%= job_scope_addition.JobID %></td>
+    <td><%= link_to 'Show', job_scope_addition %></td>
+    <td><%= link_to 'Edit', edit_job_scope_addition_path(job_scope_addition) %></td>
+    <td><%= link_to 'Destroy', job_scope_addition, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Job scope addition', new_job_scope_addition_path %>

@@ -1,4 +1,8 @@
 Redwing::Application.routes.draw do
+  resources :addition_task_records
+
+  resources :job_scope_additions
+
   resources :milestone_records
 
   resources :milestone_tasks

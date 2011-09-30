@@ -1,0 +1,27 @@
+<h1>Listing addition_task_records</h1>
+
+<table>
+  <tr>
+    <th>Jobs</th>
+    <th>Milestone tasks</th>
+    <th>Date completed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @addition_task_records.each do |addition_task_record| %>
+  <tr>
+    <td><%= addition_task_record.jobs_id %></td>
+    <td><%= addition_task_record.milestone_tasks_id %></td>
+    <td><%= addition_task_record.date_completed %></td>
+    <td><%= link_to 'Show', addition_task_record %></td>
+    <td><%= link_to 'Edit', edit_addition_task_record_path(addition_task_record) %></td>
+    <td><%= link_to 'Destroy', addition_task_record, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Addition task record', new_addition_task_record_path %>
