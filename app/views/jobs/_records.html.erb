@@ -1,6 +1,18 @@
 
 <table>
-<% if @records %>	
+<% if @records 
+percentage_temp = nil
+%>	
+
+<tr id="spinner" style="display:none; border:none;" ><td colspan=2>
+		<%= image_tag("spinner.gif", :style=> "margin-left:100px;")%> 
+</td>
+	<% for f in @records %>
+	<% @milestone_record = f
+		@milestone_record.date_completed = JobsController::EDIT_TEXT if f.date_completed_is_nil_or_blank
+	%>
+	<% unless percentage_temp == f.milestone_task.PercentageID %>
+	<tr><td colspan="2" style="text-align: left; font-weight: bold; text-decoration: underline;"><%= f.milestone_task.PercentageID %>% Milestones</td></tr>
 <tr>
 	<td style="font-weight:bold;" >
 		Record Type	
@@ -9,14 +21,8 @@
 	<td style="font-weight:bold;" >
 		Date Completed <span style="font-size:9px; font-weight:normal; vertical-align: middle;" >(MM/DD/YYYY)</span>
 	</td>
-</tr>
-<tr id="spinner" style="display:none; border:none;" ><td colspan=2>
-		<%= image_tag("spinner.gif", :style=> "margin-left:100px;")%> 
-</td>
-	<% for f in @records %>
-	<% @milestone_record = f
-		@milestone_record.date_completed = JobsController::EDIT_TEXT if f.date_completed_is_nil_or_blank
-	%>
+</tr>	
+	<% end %>
 		<tr>
 			<td>
 				<%= f.milestone_task.milestone_validation.name if f.milestone_task and f.milestone_task.milestone_validation 

@@ -5,7 +5,7 @@ class JobsController < ApplicationController
   layout "application"
   load_and_authorize_resource
   
-  EDIT_TEXT = "click to edit"
+  EDIT_TEXT = "=>click to edit<="
   #test
    
   
