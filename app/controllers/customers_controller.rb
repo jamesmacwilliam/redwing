@@ -2,6 +2,7 @@ class CustomersController < ApplicationController
   before_filter :authenticate_user!
   protect_from_forgery
   layout "application"
+  load_and_authorize_resource
   
   # GET /customers
   # GET /customers.xml

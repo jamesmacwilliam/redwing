@@ -2,6 +2,7 @@ class ScopeTypesController < ApplicationController
   before_filter :authenticate_user!
   protect_from_forgery
   layout "application"
+  load_and_authorize_resource
   
   # GET /scope_types
   # GET /scope_types.xml

@@ -41,8 +41,18 @@
 			<li><%= link_to 'Customers', customers_path %></li>
 			<li><%= link_to 'Carriers', carriers_path %></li>
 			<li><%= link_to 'Sites', work_sites_path %></li>
-			<li><%= link_to 'Project Types', project_types_path %></li>
+			<li><%= link_to 'Project', project_types_path %></li>
 			<li><%= link_to 'Scopes', scope_types_path %></li>
+			<% if current_user and current_user.roles and current_user.roles.first and current_user.roles.first.name == "SuperAdmin" %>
+			<li><%= link_to 'User Roles', "/users" %></li>
+			<% end %>
+			<li>
+				<%if user_signed_in? %>
+				<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+				<% else %>
+				<%= link_to "Sign In", new_user_session_path %>
+				<% end %>
+			</li>
   </ul> 
 
 <!-- end nav //-->

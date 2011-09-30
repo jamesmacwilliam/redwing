@@ -3,12 +3,14 @@ class Ability
 
   def initialize(user)
     can :read, :all
-    
     user || User.new #guest user
     
     if user.role? :super_admin
       can :manage, :all
-    #elsif user.role? :product_admin
+    elsif user.role? :manager
+      can :manage, [Job,Customer,Carrier,MilestoneRecord,MilestoneTask,MilestoneValidation,ProjectType,ScopeType,WorkSite]
+    elsif user.role? :data_entry
+      can :manage [Job,MilestoneRecord]
     #  can :manage, [Product, Asset, Issue]
     #elsif user.role? :product_team
     #  can :read, [Product, Asset]

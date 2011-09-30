@@ -1,4 +1,5 @@
 class MilestoneRecordsController < ApplicationController
+  load_and_authorize_resource
   # GET /milestone_records
   # GET /milestone_records.xml
   def index

@@ -1,10 +1,9 @@
-
-
 class JobsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index]
+  before_filter :authenticate_user!
   in_place_edit_for :milestone_record, :date_completed
   protect_from_forgery
   layout "application"
+  load_and_authorize_resource
   
   EDIT_TEXT = "click to edit"
   #test

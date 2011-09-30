@@ -1,0 +1,16 @@
+<%= form_for :roles_user, :url => {:controller => :users, :action => :update} do |f| %>
+
+  <div class="field">
+    Username<br />
+    <%= @user.email %>
+  </div>
+  <div class="field">
+    Role<br />
+    <%= f.select :role_id,@roles.collect {|p| [ "#{p.name}", p.id ] } %>
+    <%= f.hidden_field :user_id,:value => @user.id %> 
+		
+  </div>  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

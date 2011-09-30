@@ -2,6 +2,7 @@ class ProjectTypesController < ApplicationController
   before_filter :authenticate_user!
   protect_from_forgery
   layout "application"
+  load_and_authorize_resource
   
   # GET /project_types
   # GET /project_types.xml
