@@ -1,3 +1,3 @@
 class Notifier < ActionMailer::Base
-  default :from => "support@usrenewable.com"
+  default :from => "jmacwilliam@usrenewable.com"
 end
