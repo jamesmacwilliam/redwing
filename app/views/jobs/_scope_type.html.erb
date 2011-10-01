@@ -1,4 +1,4 @@
-		  <%= select(:job, :ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] },{},{:onchange=> "ruSure()"}) 
+		  <%= select(:job, :ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] },{},{:onfocusin=> "ruSure()"}) 
 		%>
 		<br />
 		<%= link_to 'New', scope_types_path %>

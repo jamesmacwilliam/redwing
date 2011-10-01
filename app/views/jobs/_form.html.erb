@@ -1,16 +1,16 @@
 <script type="text/javascript">
 function ruSure()
 {
-if(!confirm("Are you sure you want to change the scope? (doing so will delete any Milestone Task entries for this job!)"))
+if(document.getElementsByClassName("edit_job") != null)
 {
-document.forms[0].reset();
+alert("Are you sure you want to change the scope? (doing so will delete any Milestone Task entries for this job!)");
 }
 }
 function before_change()
 {
 if (document.getElementById("job_amount_billable").value != "")
 {alert("Before changing this value, check that nothing has been billed against it.  If it has, add an additional scope of work to it instead.");}
-	
+
 }
 </script>
 <table align="left" border="0" width="700">
@@ -58,6 +58,7 @@ if (document.getElementById("job_amount_billable").value != "")
 		</td>
 	</tr>	
 	<%= yield :record_list %>
+	
 	<tr>
 		<td colspan="6" >
 			  <div class="actions">

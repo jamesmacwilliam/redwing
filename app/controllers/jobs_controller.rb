@@ -7,7 +7,6 @@ class JobsController < ApplicationController
   
   EDIT_TEXT = "=>click to edit<="
   #test
-   
   
   def set_milestone_record_date_completed
     @error = "*incorrect date format"
@@ -156,7 +155,8 @@ class JobsController < ApplicationController
     session[:scope_type] = @job.ScopeTypeID
     session[:job_id] = @job.id
     set_milestone_records(@scope_type.first.id) if @scope_type.first
-    
+    @job_scope_additions = JobScopeAddition.find_all_by_JobID(@job.id)
+        
   end
   
   def edit
