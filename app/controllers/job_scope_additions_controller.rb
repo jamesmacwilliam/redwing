@@ -73,6 +73,7 @@ class JobScopeAdditionsController < ApplicationController
   
   
   def store_scope
+    session[:scope_type] = params[:scope_type] if request.xhr? && params[:scope_type]
     set_milestone_records(session[:scope_type])
     render :partial => "job_scope_additions/records"
   end    
@@ -99,7 +100,8 @@ class JobScopeAdditionsController < ApplicationController
     @job = Job.find(@job_scope_addition.jobs_id) if @job_scope_addition.jobs_id and Job.exists?(@job_scope_addition.jobs_id)
     redirect_to jobs_path unless @job
     @scope_type = ScopeType.find_all_by_ProjectTypeID(@job.ProjectTypeID)
-    session[:job_extra_id] = params[:id]    
+    session[:job_extra_id] = params[:id]
+    session[:scope_type] = @job_scope_addition.ScopeTypeID    
     set_milestone_records(@job_scope_addition.ScopeTypeID)
     respond_to do |format|
       format.html # show.html.erb
