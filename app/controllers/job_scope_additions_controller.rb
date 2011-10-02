@@ -132,7 +132,7 @@ class JobScopeAdditionsController < ApplicationController
 
     respond_to do |format|
       if @job_scope_addition.save
-        format.html { redirect_to(@job_scope_addition,:jid => @job_scope_addition.jobs_id, :notice => 'Extra Scope was successfully created.') }
+        format.html { redirect_to(:action => :show,:jid => @job_scope_addition.jobs_id, :notice => 'Extra Scope was successfully created.') }
         format.xml  { render :xml => @job_scope_addition, :status => :created, :location => @job_scope_addition }
       else
         format.html { redirect_to :action => "new", :jid => @job_scope_addition.jobs_id, :alert => "Failed to save" }
@@ -148,10 +148,10 @@ class JobScopeAdditionsController < ApplicationController
 
     respond_to do |format|
       if @job_scope_addition.update_attributes(params[:job_scope_addition])
-        format.html { redirect_to(@job_scope_addition, :jid => @job_scope_addition.jobs_id, :notice => 'Job scope addition was successfully updated.') }
+        format.html { redirect_to(:action => :show, :jid => @job_scope_addition.jobs_id, :notice => 'Job scope addition was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit", :jid => @job_scope_addition.jobs_id, :alert => "Failed to save" }
+        format.html { redirect_to :action => :show, :jid => @job_scope_addition.jobs_id, :alert => "Failed to save" }
         format.xml  { render :xml => @job_scope_addition.errors, :status => :unprocessable_entity }
       end
     end
