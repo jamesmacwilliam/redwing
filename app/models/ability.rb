@@ -2,15 +2,17 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, :all
+    #can :read, :all
+    #uncomment line above and comment line below before go live, this is just for demo controls
+    can :manage, :all
     user || User.new #guest user
     
     if user.role? :super_admin
       can :manage, :all
     elsif user.role? :manager
-      can :manage, [Job,Customer,Carrier,MilestoneRecord,MilestoneTask,MilestoneValidation,ProjectType,ScopeType,WorkSite]
+      can :manage, [Job,Customer,Carrier,MilestoneRecord,MilestoneTask,MilestoneValidation,ProjectType,ScopeType,WorkSite,JobScopeAddition,AdditionTaskRecord]
     elsif user.role? :data_entry
-      can :manage, [Job,MilestoneRecord]
+      can :manage, [Job,MilestoneRecord,JobScopeAddition,AdditionTaskRecord]
     #  can :manage, [Product, Asset, Issue]
     #elsif user.role? :product_team
     #  can :read, [Product, Asset]
