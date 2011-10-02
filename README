@@ -35,6 +35,8 @@ create view record_parent_additions as
 select mr2.*, cast(((mr.id + (cast(mt2.PercentageID as SIGNED) * 1000)) + 1) as SIGNED) as 'rank' from addition_task_records mr inner join milestone_tasks mt on mr.milestone_tasks_id = mt.id 
 inner join addition_task_records mr2 on mt.ParentMilestoneTaskID = mr2.milestone_tasks_id and mr2.jobs_id = mr.jobs_id inner join milestone_tasks mt2 on mr2.milestone_tasks_id = mt2.id
 
+#extra scopes percentages
+
 create view jsa_sub as
 select js.jobs_id, js.id as jsa_id,s.name as scope_name,mt.PercentageID, ar.date_completed, js.amount_billable
 ,case when date_completed is null then 0 else 1 end as dcheck
@@ -50,6 +52,7 @@ create view jsa as
 select jobs_id, jsa_id, scope_name, amount_billable, max(dpass) curr_percent, ((max(dpass) * amount_billable)/100) as curr_billable
 from jsa_sub2 group by jobs_id, jsa_id
 
+#Jobs percentages
 
 create view js_sub as
 select j.id jobs_id, mt.PercentageID, ar.date_completed, j.amount_billable
