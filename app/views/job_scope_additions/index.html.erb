@@ -22,4 +22,5 @@ Job Scope Additions
 
 <br />
 
-<%= link_to 'New Job scope addition', "#{new_job_scope_addition_path}/?jid=#{@job.id}" %>
+<%= link_to 'New Job scope addition', "#{new_job_scope_addition_path}/?jid=#{@job.id}" %> | 
+<%= link_to 'Back', "#{jobs_path}/#{params[:jid]}" %>
