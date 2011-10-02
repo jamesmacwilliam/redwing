@@ -1,0 +1,38 @@
+<% if @jsas 
+percentage_temp = nil
+%>	
+<table>
+		<tr>
+			<td style="font-weight:bold">
+				Scope
+			</td>
+			<td style="font-weight:bold">
+				Percent Completed
+			</td>
+			<td style="font-weight:bold">
+				Billable to Date
+			</td>
+			<td style="font-weight:bold">
+				Total Billable
+			</td>
+		</tr>
+
+	<% for f in @jsas %>
+		<tr>
+			<td>
+				<%= f.scope_name %>
+			</td>
+			<td>
+				<%= f.curr_percent %>
+			</td>
+			<td>
+				<%= f.curr_billable %>
+			</td>
+			<td>
+				<%= f.amount_billable %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+<% end %>	
+

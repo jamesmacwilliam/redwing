@@ -22,3 +22,45 @@ insert into roles_users values (1,1)
 alter table job_scope_additions add column amount_billable decimal(10,2) null
 
 #above is to give the first user created admin access
+
+ALTER TABLE redwing.job_scope_additions CHANGE JobID jobs_id int
+
+create view ordered_record_additions as
+select mr.*,cast((mr.id + (cast(mt.PercentageID as SIGNED) * 1000)) as SIGNED) as 'rank' from addition_task_records mr inner join milestone_tasks mt on mr.milestone_tasks_id = mt.id
+where mr.id not in (select id from record_parent_additions)
+union all
+select * from record_parent_additions
+
+create view record_parent_additions as
+select mr2.*, cast(((mr.id + (cast(mt2.PercentageID as SIGNED) * 1000)) + 1) as SIGNED) as 'rank' from addition_task_records mr inner join milestone_tasks mt on mr.milestone_tasks_id = mt.id 
+inner join addition_task_records mr2 on mt.ParentMilestoneTaskID = mr2.milestone_tasks_id and mr2.jobs_id = mr.jobs_id inner join milestone_tasks mt2 on mr2.milestone_tasks_id = mt2.id
+
+create view jsa_sub as
+select js.jobs_id, js.id as jsa_id,s.name as scope_name,mt.PercentageID, ar.date_completed, js.amount_billable
+,case when date_completed is null then 0 else 1 end as dcheck
+from jobs j inner join job_scope_additions js on j.id = js.jobs_id inner join addition_task_records
+ar on js.id = ar.jobs_id inner join milestone_tasks mt on ar.milestone_tasks_id = mt.id inner join scope_types s
+on js.ScopeTypeID = s.id
+
+create view jsa_sub2 as 
+select jobs_id, jsa_id, scope_name, PercentageID, amount_billable, 
+case when sum(dcheck) = count(*) then 1 else 0 end as dpass from jsa_sub group by jobs_id, jsa_id,PercentageID
+
+create view jsa as
+select jobs_id, jsa_id, scope_name, amount_billable, max(dpass) curr_percent, ((max(dpass) * amount_billable)/100) as curr_billable
+from jsa_sub2 group by jobs_id, jsa_id
+
+
+create view js_sub as
+select j.id jobs_id, mt.PercentageID, ar.date_completed, j.amount_billable
+,case when ar.date_completed is null then 0 else 1 end as dcheck
+from jobs j inner join milestone_records
+ar on j.id = ar.jobs_id inner join milestone_tasks mt on ar.milestone_tasks_id = mt.id
+
+create view js_sub2 as 
+select jobs_id, PercentageID, amount_billable, 
+case when sum(dcheck) = count(*) then 1 else 0 end as dpass from js_sub group by jobs_id, PercentageID
+
+create view js as
+select jobs_id, amount_billable, max(dpass) curr_percent, ((max(dpass) * amount_billable)/100) as curr_billable
+from js_sub2 group by jobs_id

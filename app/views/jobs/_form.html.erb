@@ -58,10 +58,17 @@ if (document.getElementById("job_amount_billable").value != "")
 		</td>
 	</tr>	
 	<%= yield :record_list %>
-	
+	<% if @job.id %>
+	<tr>
+		<td style="text-align:left;" colspan="6" >			
+			<span style="font-weight:bold;" >Additional Job Scopes - </span><%= link_to "New", "#{job_scope_additions_path}/?jid=#{@job.id}" %>		
+		</td>
+	</tr>
+	<%= render "extra_scopes" %>
+	<% end %>	
 	<tr>
 		<td colspan="6" >
-			  <div class="actions">
+  <div class="actions">
     <%= f.submit %>
   </div>
 

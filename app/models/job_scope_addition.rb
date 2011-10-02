@@ -5,7 +5,8 @@ class JobScopeAddition < ActiveRecord::Base
   validates_numericality_of :amount_billable  
   
   class << self
-    def find_all_by_JobID(JobID)
-      where(:JobID => JobID)
+    def find_all_by_jobs_id(jobs_id)
+      where(:jobs_id => jobs_id)
+    end  
   end
 end

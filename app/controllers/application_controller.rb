@@ -25,4 +25,13 @@ class ApplicationController < ActionController::Base
     recs_perm
   end
   
+  def order_rows_additional_scope(job_id)
+    records = OrderedRecordAddition.find_all_by_jobs_id(job_id)
+    recs_perm = AdditionTaskRecord.where("0")
+    records.each do |x|
+      recs_perm.push(AdditionTaskRecord.find(x.id))
+    end
+    recs_perm    
+  end
+  
 end

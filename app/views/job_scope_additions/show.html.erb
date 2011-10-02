@@ -1,15 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% content_for(:header) do %>
+Job Scope Addition
+<% end %>
 
-<p>
-  <b>Scopetypeid:</b>
-  <%= @job_scope_addition.ScopeTypeID %>
-</p>
-
-<p>
-  <b>Jobid:</b>
-  <%= @job_scope_addition.JobID %>
-</p>
+<%= render 'form' %>
 
 
-<%= link_to 'Edit', edit_job_scope_addition_path(@job_scope_addition) %> |
-<%= link_to 'Back', job_scope_additions_path %>
+

@@ -4,16 +4,19 @@
 Jobs
 <% end %>
 
-<%= link_to "New", new_job_path %>
+<%= link_to "New Job", new_job_path %>
 
 <br />
-<table align="left" border="0" width="600">
+<table align="left" border="0" width="700">
   <tr class="table_head" >
     <td>Customer</td>
     <td>Carrier</td>
     <td>Site</td>
     <td>Project</td>
     <td>Scope</td>
+    <td>Percent Completed</td>
+    <td>Billable To Date</td>
+    <td>Total Billable</td>
     <td></td>
   </tr>
 <% @jobs.each do |job| %>  
@@ -24,6 +27,9 @@ Jobs
     <td><%= job.work_site.name %></td>
     <td><%= job.project_type.name %></td>
     <td><%= job.scope_type.name %></td>
+    <td><%= job.js.curr_percent %></td>
+    <td><%= job.js.curr_billable %></td>
+    <td><%= job.amount_billable %></td>
     <td><%= link_to 'Edit', job_path(job) %></td>
   </tr>
 <% end %>

@@ -1,15 +1,15 @@
 
 <table>
-<% if @records 
+<% if @records
 percentage_temp = nil
-%>	
+%>
 
 <tr id="spinner" style="display:none; border:none;" ><td colspan=2>
 		<%= image_tag("spinner.gif", :style=> "margin-left:100px;")%> 
 </td></tr>
 	<% for f in @records %>
-	<% @milestone_record = f
-		@milestone_record.date_completed = JobsController::EDIT_TEXT if f.date_completed_is_nil_or_blank
+	<% @addition_task_record = f
+		@addition_task_record.date_completed = JobScopeAdditionsController::EDIT_TEXT if f.date_completed_is_nil_or_blank
 	%>
 	<% unless percentage_temp == f.milestone_task.PercentageID %>
 	<tr><td colspan="2" style="text-align: left; font-weight: bold; text-decoration: underline;"><%= f.milestone_task.PercentageID %>% Milestones</td></tr>
@@ -31,7 +31,7 @@ percentage_temp = nil
 			
 			<td style="padding-left:20px;">
 
-				<%= in_place_editor_field :milestone_record, :date_completed %> 
+				<%= in_place_editor_field :addition_task_record, :date_completed %> 
 
 			</td>
 		</tr>

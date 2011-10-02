@@ -155,8 +155,8 @@ class JobsController < ApplicationController
     session[:scope_type] = @job.ScopeTypeID
     session[:job_id] = @job.id
     set_milestone_records(@scope_type.first.id) if @scope_type.first
-    @job_scope_additions = JobScopeAddition.find_all_by_JobID(@job.id)
-        
+    @job_scope_additions = JobScopeAddition.find_all_by_jobs_id(@job.id)
+    @jsas = Jsa.find_all_by_jobs_id(@job.id)    
   end
   
   def edit

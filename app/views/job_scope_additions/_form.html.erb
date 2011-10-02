@@ -1,25 +1,52 @@
+<script type="text/javascript">
+function ruSure()
+{
+if(document.getElementsByClassName("edit_job_scope_addition") != null)
+{
+alert("Are you sure you want to change the scope? (doing so will delete any Milestone Task entries for this job!)");
+}
+}
+function before_change()
+{
+if (document.getElementById("job_scope_addition_amount_billable").value != "")
+{alert("Before changing this value, check that nothing has been billed against it.  If it has, add an additional scope of work to it instead.");}
+
+}
+</script>
 <%= form_for(@job_scope_addition) do |f| %>
-  <% if @job_scope_addition.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@job_scope_addition.errors.count, "error") %> prohibited this job_scope_addition from being saved:</h2>
-
-      <ul>
-      <% @job_scope_addition.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :ScopeTypeID %><br />
-    <%= f.text_field :ScopeTypeID %>
-  </div>
-  <div class="field">
-    <%= f.label :JobID %><br />
-    <%= f.text_field :JobID %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table align="left" border="0" width="700">
+<th>
+	<%= f.label :ScopeTypeID, "Scope" %>
+</th>
+<th>
+	<%= f.label :amount_billable, "Amount Billable" %>	
+</th>	
+</tr>
+<tr>
+	<td>
+    <%= f.select(:ScopeTypeID, @scope_type.collect {|p| [ "#{p.name}", p.id ] },{},{:onfocusin=> "ruSure()"})  %>
+    <%= f.hidden_field :jobs_id, :value => params[:jid] %>	
+    
+    <%= observe_field :job_scope_addition_ScopeTypeID, :frequency => 0.5, :with => "'scope_type=' + escape(value)",
+			:url => {:action => :store_scope}, :update => "div_records"
+	%> 	
+	</td>
+	<td>
+		<%= f.text_field :amount_billable, :size=> 9, :onfocusin => "before_change();" %>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" >
+		<%= f.submit %>	
+	</td>
+</tr>
+<tr>
+	<td colspan="2"><%= link_to 'Back', "#{job_scope_additions_path}/?jid=#{params[:jid]}" %></td>
+</tr>	
+<tr>
+	<td colspan="2" id="div_records" >
+	   <%= render 'records' %>
+	</td>	
+</tr>
+</table>
 <% end %>
