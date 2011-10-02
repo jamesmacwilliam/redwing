@@ -110,6 +110,7 @@ class JobScopeAdditionsController < ApplicationController
   # GET /job_scope_additions/new
   # GET /job_scope_additions/new.xml
   def new
+    session[:scope_type] = nil
     @job_scope_addition = JobScopeAddition.new
     @job = Job.find(params[:jid]) if params[:jid] and Job.exists?(params[:jid])
     redirect_to jobs_path unless @job
