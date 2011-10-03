@@ -1,6 +1,5 @@
 class JobsController < ApplicationController
-  before_filter :authenticate_user!
-  in_place_edit_for :milestone_record, :date_completed
+  before_filter :authenticate_user!, :clear_error_sess
   protect_from_forgery
   layout "application"
   load_and_authorize_resource
@@ -144,8 +143,7 @@ class JobsController < ApplicationController
   
   
   
-  def show 
-    
+  def show    
     @job = Job.find(params[:id])
     @customer = Customer.order(:name => 'desc')
     @carrier = Carrier.order(:name => 'desc')
@@ -156,7 +154,7 @@ class JobsController < ApplicationController
     session[:job_id] = @job.id
     set_milestone_records(@scope_type.first.id) if @scope_type.first
     @job_scope_additions = JobScopeAddition.find_all_by_jobs_id(@job.id)
-    @jsas = Jsa.find_all_by_jobs_id(@job.id)    
+    #@jsas = Jsa.find_all_by_jobs_id(@job.id)    
   end
   
   def edit

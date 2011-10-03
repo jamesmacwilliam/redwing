@@ -1,7 +1,41 @@
 class MilestoneRecordsController < ApplicationController
   load_and_authorize_resource
+  before_filter :authenticate_user!  
+  in_place_edit_for :milestone_record, :date_completed  
+  layout "application"
+  load_and_authorize_resource
+    
+  EDIT_TEXT = "=>click to edit<="
   # GET /milestone_records
   # GET /milestone_records.xml
+  
+  
+  def set_milestone_record_date_completed
+    session[:in_place_editor_error] = "*incorrect date format"
+    milestone_record = MilestoneRecord.find(params[:id])
+    old_value = milestone_record.date_completed
+    milestone_record.date_completed = params[:value]
+    if not params[:value] == EDIT_TEXT and milestone_record.valid? and not params[:value] == ""
+      milestone_record.save!
+      session[:in_place_editor_error] = nil
+      render :text => params[:value]
+    elsif old_value and not old_value == ""
+      render :text => old_value  
+    else
+      render :text => EDIT_TEXT
+    end  
+  end
+  
+  
+  def get_milestone_record_date_completed
+    milestone_record = MilestoneRecord.find(params[:id])
+    if milestone_record.date_completed
+    render :text => milestone_record.date_completed
+    else
+      render :text => EDIT_TEXT
+    end
+  end  
+  
   def index
     @milestone_records = MilestoneRecord.all
 

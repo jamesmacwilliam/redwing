@@ -3,7 +3,7 @@ class AdditionTaskRecord < ActiveRecord::Base
   belongs_to :milestone_task, :foreign_key => :milestone_tasks_id
 
   validates_format_of :date_completed,
-      :with => /\d{2}\/\d{2}\/\d{4}/i, 
+      :with => /\A\d{2}\/\d{2}\/\d{4}\z/i, 
       :message => "^Date must be in the following format: mm/dd/yyyy",
       :allow_blank => true, :allow_nil => true
   

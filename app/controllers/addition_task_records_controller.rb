@@ -1,6 +1,40 @@
 class AdditionTaskRecordsController < ApplicationController
+  in_place_edit_for :addition_task_record, :date_completed
+  protect_from_forgery
+  layout "application"
+  load_and_authorize_resource
+  
+  EDIT_TEXT = "=>click to edit<="  
+  
   # GET /addition_task_records
   # GET /addition_task_records.xml
+  
+
+  def set_addition_task_record_date_completed
+    session[:in_place_editor_error] = "*incorrect date format"
+    milestone_record = AdditionTaskRecord.find(params[:id])
+    old_value = milestone_record.date_completed
+    milestone_record.date_completed = params[:value]
+    if not params[:value] == EDIT_TEXT and milestone_record.valid? and not params[:value] == ""
+      milestone_record.save!
+      session[:in_place_editor_error] = nil
+      render :text => params[:value]
+    elsif old_value and not old_value == ""
+      render :text => old_value  
+    else
+      render :text => EDIT_TEXT
+    end  
+  end  
+  
+  def get_addition_task_record_date_completed
+    milestone_record = AdditionTaskRecord.find(params[:id])
+    if milestone_record.date_completed
+    render :text => milestone_record.date_completed
+    else
+      render :text => EDIT_TEXT
+    end
+  end  
+  
   def index
     @addition_task_records = AdditionTaskRecord.all
 

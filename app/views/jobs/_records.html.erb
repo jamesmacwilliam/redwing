@@ -31,13 +31,13 @@ percentage_temp = nil
 			
 			<td style="padding-left:20px;">
 
-				<%= in_place_editor_field :milestone_record, :date_completed %> 
+				<%= in_place_editor_field :milestone_record, :date_completed,{}, {:url => url_for({:controller => :milestone_records, :action => :set_milestone_record_date_completed, :id => f.id})} %> 
 
 			</td>
 		</tr>
 	<% end %>
 <% end %>	
 </table>
-<% if @error %>
-<span style="color:red; font-weight:bold;" ><%= @error %></span>
+<% if session[:in_place_editor_error] %>
+<span style="color:red; font-weight:bold;" ><%= session[:in_place_editor_error] %></span>
 <% end %>

@@ -4,6 +4,7 @@ class Job < ActiveRecord::Base
   belongs_to :work_site, :foreign_key => :SiteID
   belongs_to :project_type, :foreign_key => :ProjectTypeID
   belongs_to :scope_type, :foreign_key => :ScopeTypeID
+  has_many :milestone_records
   belongs_to :js, :foreign_key => :id
   
   validates_presence_of :CarrierID, :CustomerID, :ProjectTypeID, :SiteID, :ScopeTypeID, :amount_billable

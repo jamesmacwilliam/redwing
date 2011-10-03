@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
   
+  def clear_error_sess
+    session[:in_place_editor_error] = nil
+  end
+  
   def mark_required(object, attribute)
     "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
   end
