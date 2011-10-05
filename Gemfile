@@ -39,3 +39,7 @@ gem 'in_place_editing', '1.1.2'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem 'rspec-rails', '>= 2.0.0.beta.7'
+gem 'autotest-rails'
+gem 'autotest'
+gem 'mocha'

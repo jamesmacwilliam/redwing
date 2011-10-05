@@ -1,4 +1,6 @@
 Redwing::Application.routes.draw do
+  resources :widgets
+
   resources :addition_task_records
 
   resources :job_scope_additions
