@@ -36,10 +36,13 @@ gem 'in_place_editing', '1.1.2'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
-gem 'rspec-rails', '>= 2.0.0.beta.7'
-gem 'autotest-rails'
-gem 'autotest'
-gem 'mocha'
+group :development, :test do
+  gem 'rspec-rails', '>= 2.0.0.beta.7'
+  gem 'autotest-rails'
+  gem 'autotest'
+  gem 'mocha'
+  gem 'cucumber-rails'
+  gem 'launchy'
+  gem 'capybara'
+  gem 'database_cleaner'
+end

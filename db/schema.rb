@@ -34,10 +34,9 @@ ActiveRecord::Schema.define(:version => 20111004235636) do
 
   create_table "job_scope_additions", :force => true do |t|
     t.integer  "ScopeTypeID"
-    t.integer  "jobs_id"
+    t.integer  "JobID"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "amount_billable", :precision => 10, :scale => 2
   end
 
   create_table "jobs", :force => true do |t|
@@ -54,60 +53,10 @@ ActiveRecord::Schema.define(:version => 20111004235636) do
     t.datetime "updated_at"
   end
 
-  create_table "js", :id => false, :force => true do |t|
-    t.integer "jobs_id",         :default => 0, :null => false
-    t.float   "amount_billable"
-    t.integer "curr_percent"
-    t.float   "curr_billable"
-  end
-
-  create_table "js_sub", :id => false, :force => true do |t|
-    t.integer "jobs_id",                        :default => 0, :null => false
-    t.integer "PercentageID"
-    t.string  "date_completed",  :limit => 100
-    t.float   "amount_billable"
-    t.integer "dcheck",                         :default => 0, :null => false
-  end
-
-  create_table "js_sub2", :id => false, :force => true do |t|
-    t.integer "jobs_id",         :default => 0, :null => false
-    t.integer "PercentageID"
-    t.float   "amount_billable"
-    t.integer "dpass"
-  end
-
-  create_table "jsa", :id => false, :force => true do |t|
-    t.integer "jobs_id"
-    t.integer "jsa_id",                                         :default => 0, :null => false
-    t.string  "scope_name"
-    t.decimal "amount_billable", :precision => 10, :scale => 2
-    t.integer "curr_percent"
-    t.decimal "curr_billable",   :precision => 33, :scale => 6
-  end
-
-  create_table "jsa_sub", :id => false, :force => true do |t|
-    t.integer "jobs_id"
-    t.integer "jsa_id",                                         :default => 0, :null => false
-    t.string  "scope_name"
-    t.integer "PercentageID"
-    t.string  "date_completed"
-    t.decimal "amount_billable", :precision => 10, :scale => 2
-    t.integer "dcheck",                                         :default => 0, :null => false
-  end
-
-  create_table "jsa_sub2", :id => false, :force => true do |t|
-    t.integer "jobs_id"
-    t.integer "jsa_id",                                         :default => 0, :null => false
-    t.string  "scope_name"
-    t.integer "PercentageID"
-    t.decimal "amount_billable", :precision => 10, :scale => 2
-    t.integer "dpass"
-  end
-
   create_table "milestone_records", :force => true do |t|
     t.integer  "jobs_id"
     t.integer  "milestone_tasks_id"
-    t.string   "date_completed",     :limit => 100
+    t.date     "date_completed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -136,50 +85,10 @@ ActiveRecord::Schema.define(:version => 20111004235636) do
     t.datetime "updated_at"
   end
 
-  create_table "ordered_record_additions", :id => false, :force => true do |t|
-    t.integer  "id",                              :default => 0, :null => false
-    t.integer  "jobs_id"
-    t.integer  "milestone_tasks_id"
-    t.string   "date_completed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "rank",               :limit => 8
-  end
-
-  create_table "ordered_records", :id => false, :force => true do |t|
-    t.integer  "id",                                :default => 0, :null => false
-    t.integer  "jobs_id"
-    t.integer  "milestone_tasks_id"
-    t.string   "date_completed",     :limit => 100
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "rank",               :limit => 8
-  end
-
   create_table "project_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "record_parent_additions", :id => false, :force => true do |t|
-    t.integer  "id",                              :default => 0, :null => false
-    t.integer  "jobs_id"
-    t.integer  "milestone_tasks_id"
-    t.string   "date_completed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "rank",               :limit => 8
-  end
-
-  create_table "record_parents", :id => false, :force => true do |t|
-    t.integer  "id",                                :default => 0, :null => false
-    t.integer  "jobs_id"
-    t.integer  "milestone_tasks_id"
-    t.string   "date_completed",     :limit => 100
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "rank",               :limit => 8
   end
 
   create_table "roles", :force => true do |t|
